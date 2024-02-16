@@ -2,9 +2,6 @@ import os
 import re
 import glob
 import PyPDF2
-import nltk
-from nltk.corpus import stopwords
-from collections import defaultdict
 
 class Formater:
     
