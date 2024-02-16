@@ -1,3 +1,6 @@
 PyPDF2
 scikit-learn
 nltk
+pdf2image
+pytesseract
+matplotlib
