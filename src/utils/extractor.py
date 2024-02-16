@@ -20,14 +20,16 @@ class Extractor:
 
     def get_claimant(self):
         """Extract claimants from PDF files."""
-        return self.formater.extract_from_pdf(r"RECLAMANTE: (\w+)")
+        return self.formater.extract_from_pdf(r"(?:RECLAMANTE|AUTOR): (\w+)")
 
     def extract_info(self):
         """Extract process numbers and claimants from PDF files."""
         process_nums = self.get_process_number()
         claimants = self.get_claimant()
         info = defaultdict(list)
+        pages= []
         print('Iniciando extração de informações...')
         for (process_num, process_page), (claimant, claimant_page) in zip(process_nums, claimants):
             info[process_num].append((claimant, claimant_page))
-        return info
+            pages.append(claimant_page)
+        return info,list(dict.fromkeys(pages))
