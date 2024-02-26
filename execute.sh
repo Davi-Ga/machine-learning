@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +x $0
+
 # Get the directory of the current script
 dir=$(dirname "$0")
 
