@@ -39,6 +39,7 @@ while getopts ":ec" opt; do
     esac
 done
 shift $((OPTIND -1))
+exit
 
 # Check if no arguments were passed and display usage
 if [ $# -eq 0 ]; then
