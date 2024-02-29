@@ -32,10 +32,10 @@ class Cutter:
                 for i in range(len(data["text"])):
                     if data["text"][i] == search_text_list[0] and data["text"][i:i+len(search_text_list)] == search_text_list:
                         # Get the bounding box of the text element
-                        left = min(data["left"][i:i+len(search_text_list)]) - 260
+                        left = min(data["left"][i:i+len(search_text_list)]) - 390
                         top = min(data["top"][i:i+len(search_text_list)]) - 40
-                        right = max([data["left"][j] + data["width"][j] for j in range(i, i+len(search_text_list))]) + 1262
-                        bottom = max([data["top"][j] + data["height"][j] for j in range(i, i+len(search_text_list))]) + 102
+                        right = max([data["left"][j] + data["width"][j] for j in range(i, i+len(search_text_list))]) + 1160
+                        bottom = max([data["top"][j] + data["height"][j] for j in range(i, i+len(search_text_list))]) + 1620
 
                         # Crop the image to the bounding box
                         cropped_image = image.crop((left, top, right, bottom))
