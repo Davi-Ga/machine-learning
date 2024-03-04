@@ -12,7 +12,7 @@ usage() {
 }
 
 # Parse command line arguments
-while getopts ":ec" opt; do
+while getopts ":ecl" opt; do
     case ${opt} in
         e)
             echo "Extracting documents"
@@ -29,6 +29,15 @@ while getopts ":ec" opt; do
                 python3 "$dir/src/utils/cutter.py"
             else
                 echo "Error: $dir/src/utils/cutter.py does not exist"
+                exit 1
+            fi
+            ;;
+        l)
+            echo "Labelling documents"
+            if [ -f "$dir/src/utils/labelling.py" ]; then
+                python3 "$dir/src/utils/labelling.py"
+            else
+                echo "Error: $dir/src/utils/labelling.py does not exist"
                 exit 1
             fi
             ;;
