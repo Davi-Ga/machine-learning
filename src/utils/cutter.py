@@ -32,16 +32,21 @@ class Cutter:
                 for i in range(len(data["text"])):
                     if data["text"][i] == search_text_list[0] and data["text"][i:i+len(search_text_list)] == search_text_list:
                         # Get the bounding box of the text element
-                        left = min(data["left"][i:i+len(search_text_list)]) - 390
-                        top = min(data["top"][i:i+len(search_text_list)]) - 40
-                        right = max([data["left"][j] + data["width"][j] for j in range(i, i+len(search_text_list))]) + 1160
-                        bottom = max([data["top"][j] + data["height"][j] for j in range(i, i+len(search_text_list))]) + 1620
-
+                        # left = min(data["left"][i:i+len(search_text_list)]) - 390
+                        # top = min(data["top"][i:i+len(search_text_list)]) - 40
+                        # right = max([data["left"][j] + data["width"][j] for j in range(i, i+len(search_text_list))]) + 1160
+                        # bottom = max([data["top"][j] + data["height"][j] for j in range(i, i+len(search_text_list))]) + 1620
+                        width, height = image.size
+                        crop_amount=400
+                        left = 0
+                        top = 0
+                        right = width
+                        bottom = height - crop_amount
                         # Crop the image to the bounding box
                         cropped_image = image.crop((left, top, right, bottom))
 
                         # Save the image to the output directory
-                        image_path = os.path.join(self.output_folder, f'{os.path.basename(pdf_path)}.png')
+                        image_path = os.path.join(self.output_folder, f'{os.path.basename(pdf_path.replace(".pdf",""))}.png')
                         cropped_image.save(image_path)
 
             except (FileNotFoundError, IOError) as e:
