@@ -47,7 +47,6 @@ class Labelling:
                     continue
                 print(f"{image}")
                 data = pytesseract.image_to_string(image)
-                print(data)
                 found = False
                 for search_text in self.search_texts:
                     if search_text in data:
