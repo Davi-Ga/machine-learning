@@ -14,12 +14,15 @@ class Labelling:
             "DESPACHO",
             "SENTENCA",
             "NOTIFICACAO",
-            "NOTIFICAGAO"
+            "NOTIFICAGAO",
             "CERTIDAO",
             "INTIMACAO",
+            "INTIMAGAO",
+            "INTI MACAO",
+            "Consulta",
             "ATA DE AUDIENCIA",
             "CITACAO",
-            "CITAÇÃO",
+            "CITAGAO",
             "CONCILIACAO",
             "TERMO",
             "CONSULTA",
@@ -50,8 +53,10 @@ class Labelling:
                 found = False
                 for search_text in self.search_texts:
                     if search_text in data:
-                        if search_text == "NOTIFICAGAO":
-                            search_text.replace("G","C")
+                        if search_text == "INTI MACAO":
+                            search_text = search_text.replace(" ", "")
+                        if search_text == "NOTIFICAGAO" or search_text == "INTIMAGAO" or search_text == "CITAGAO":
+                            search_text = search_text.replace("G", "C")
                         writer.writerow([image, search_text])
                         ignore_images.add(image)
                         found = True
