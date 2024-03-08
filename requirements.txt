@@ -3,4 +3,9 @@ scikit-learn
 nltk
 pdf2image
 pytesseract
+pandas
+numpy
 matplotlib
+matplotlib-inline
+seaborn
+openpyxl
