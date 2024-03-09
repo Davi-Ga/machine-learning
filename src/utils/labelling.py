@@ -35,6 +35,8 @@ class Labelling:
         self.path = path
         self.output_folder = output_folder
         self.search_texts = search_texts
+        self.search_texts_to_replace = ["NOTIFICAGAO", "INTIMAGAO", "CITAGAO"]
+
 
         if not os.path.exists(self.output_folder):
             os.makedirs(self.output_folder)
@@ -55,7 +57,7 @@ class Labelling:
                     if search_text in data:
                         if search_text == "INTI MACAO":
                             search_text = search_text.replace(" ", "")
-                        if search_text == "NOTIFICAGAO" or search_text == "INTIMAGAO" or search_text == "CITAGAO":
+                        if search_text in self.search_texts_to_replace:
                             search_text = search_text.replace("G", "C")
                         writer.writerow([image, search_text])
                         ignore_images.add(image)
