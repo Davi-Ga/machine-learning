@@ -25,19 +25,19 @@ while getopts ":ecl" opt; do
             ;;
         c)
             echo "Cutting documents"
-            if [ -f "$dir/src/utils/cutter.py" ]; then
-                python3 "$dir/src/utils/cutter.py"
+            if [ -f "$dir/src/features/cutter.py" ]; then
+                python3 "$dir/src/features/cutter.py"
             else
-                echo "Error: $dir/src/utils/cutter.py does not exist"
+                echo "Error: $dir/src/features/cutter.py does not exist"
                 exit 1
             fi
             ;;
         l)
             echo "Labelling documents"
-            if [ -f "$dir/src/utils/labelling.py" ]; then
-                python3 "$dir/src/utils/labelling.py"
+            if [ -f "$dir/src/features/labelling.py" ]; then
+                python3 "$dir/src/features/labelling.py"
             else
-                echo "Error: $dir/src/utils/labelling.py does not exist"
+                echo "Error: $dir/src/features/labelling.py does not exist"
                 exit 1
             fi
             ;;
