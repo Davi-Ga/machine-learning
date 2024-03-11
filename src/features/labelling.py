@@ -64,7 +64,8 @@ class Labelling:
                 for search_text in self.search_texts:
                     if search_text in data:
                         if search_text == "Calculo":
-                            search_text = "CALCULO"
+                            search_text = search_text.replace("C", "c")
+                            search_text = search_text.upper()
                         if search_text == "INTI MACAO":
                             search_text = search_text.replace(" ", "")
                         if search_text in self.search_texts_to_replace:
