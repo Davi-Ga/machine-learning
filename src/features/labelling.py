@@ -8,7 +8,7 @@ class Labelling:
 
     def __init__(
         self,
-        path="data/cuted",
+        path="data/cuted/process1",
         search_texts=[
             "ACORDAO",
             "DESPACHO",
@@ -29,6 +29,11 @@ class Labelling:
             "DECISAO",
             "MANDADO",
             "AVALIACAO",
+            "ALVARA",
+            "CALCULO",
+            "Imposto",
+            "Calculo",
+            "REQUISICAO",
         ],
         output_folder="data/labelled",
     ):
@@ -37,15 +42,18 @@ class Labelling:
         self.search_texts = search_texts
         self.search_texts_to_replace = ["NOTIFICAGAO", "INTIMAGAO", "CITAGAO"]
 
-
         if not os.path.exists(self.output_folder):
             os.makedirs(self.output_folder)
 
     def create(self):
         ignore_images = set()
-        with open(f"{self.output_folder}/labelled_data.csv", "w", newline="") as file:
+        filename = f"{self.output_folder}/labelled_data1.csv"
+        file_exists = os.path.isfile(filename)
+
+        with open(filename, "a", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["Image_Path", "Label"])
+            if not file_exists:
+                writer.writerow(["Image_Path", "Label"])
 
             for image in sorted(glob.glob(os.path.join(self.path, "*.png"))):
                 if image in ignore_images:
@@ -55,6 +63,8 @@ class Labelling:
                 found = False
                 for search_text in self.search_texts:
                     if search_text in data:
+                        if search_text == "Calculo":
+                            search_text = "CALCULO"
                         if search_text == "INTI MACAO":
                             search_text = search_text.replace(" ", "")
                         if search_text in self.search_texts_to_replace:
