@@ -1,3 +1,4 @@
+tensorflow
 PyPDF2
 scikit-learn
 nltk
