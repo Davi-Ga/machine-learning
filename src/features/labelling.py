@@ -2,19 +2,25 @@ import os
 import glob
 import pytesseract
 import csv
+from dotenv import load_dotenv
 
+load_dotenv('./.env')
+
+CUTED_PATH = os.getenv('CUTED_PATH')
 
 class Labelling:
 
     def __init__(
         self,
-        path="data/cuted/process1",
+        path=CUTED_PATH,
         search_texts=[
             "ACORDAO",
             "DESPACHO",
             "SENTENCA",
             "NOTIFICACAO",
             "NOTIFICAGAO",
+            "NOTI FICACAO",
+            "NOTIFICAGCAO",
             "CERTIDAO",
             "INTIMACAO",
             "INTIMAGAO",
@@ -34,6 +40,7 @@ class Labelling:
             "Imposto",
             "Calculo",
             "REQUISICAO",
+            "RELATORIO",
         ],
         output_folder="data/labelled",
     ):
@@ -66,10 +73,12 @@ class Labelling:
                         if search_text == "Calculo":
                             search_text = search_text.replace("C", "c")
                             search_text = search_text.upper()
-                        if search_text == "INTI MACAO":
+                        if search_text == "INTI MACAO" or search_text == "NOTI FICACAO":
                             search_text = search_text.replace(" ", "")
                         if search_text in self.search_texts_to_replace:
                             search_text = search_text.replace("G", "C")
+                        if search_text == "NOTIFICAGCAO":
+                            search_text = search_text.replace("G", "")
                         writer.writerow([image, search_text])
                         ignore_images.add(image)
                         found = True
