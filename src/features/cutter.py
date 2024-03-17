@@ -1,15 +1,19 @@
 import os
 import glob
 from pdf2image import convert_from_path
-import pytesseract
+from dotenv import load_dotenv
+
+load_dotenv('./.env')
+
+CUTED_PATH = os.getenv('CUTED_PATH')
+EXTRACTED_PATH = os.getenv('EXTRACTED_PATH')
 
 class Cutter:
     
-    def __init__(self, path='data/extracted/process1', search_text="PODER", output_folder='data/cuted/process1'):
+    def __init__(self, path=EXTRACTED_PATH, output_folder=CUTED_PATH):
         """Initialize the Cutter with a default path to PDF files."""
         self.path = path
         self.output_folder = output_folder
-        self.search_text = search_text
         
         if not os.path.exists(self.output_folder):
             os.makedirs(self.output_folder)
