@@ -6,7 +6,6 @@ class Extractor:
     def __init__(self):
         self.formater = Formater()
         self.info = defaultdict(list)
-        print("Iniciando extração de informações...")
 
     def __str__(self):
         """Return a string representation of the extracted information."""
@@ -28,7 +27,6 @@ class Extractor:
         claimants = self.get_claimant()
         info = defaultdict(list)
         pages= []
-        print('Iniciando extração de informações...')
         for (process_num, process_page), (claimant, claimant_page) in zip(process_nums, claimants):
             info[process_num].append((claimant, claimant_page))
             pages.append(claimant_page)

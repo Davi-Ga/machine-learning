@@ -4,9 +4,10 @@ import pytesseract
 import csv
 from dotenv import load_dotenv
 
-load_dotenv('./.env')
+load_dotenv("./.env")
 
-CUTED_PATH = os.getenv('CUTED_PATH')
+CUTED_PATH = os.getenv("CUTED_PATH")
+
 
 class Labelling:
 
@@ -54,7 +55,7 @@ class Labelling:
 
     def create(self):
         ignore_images = set()
-        filename = f"{self.output_folder}/labelled_data1.csv"
+        filename = f"{self.output_folder}/labelled_data.csv"
         file_exists = os.path.isfile(filename)
 
         with open(filename, "a", newline="") as file:
