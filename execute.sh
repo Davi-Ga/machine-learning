@@ -7,7 +7,7 @@ dir=$(dirname "$0")
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 [--extractor|-e] [--cutter|-c]"
+    echo "Usage: $0 [--extractor|-e] [--cutter|-c] [--labeling|-l]"
     exit 1
 }
 
