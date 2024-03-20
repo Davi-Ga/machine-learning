@@ -53,4 +53,3 @@ class Cutter:
 if __name__ == "__main__":
     cutter = Cutter()
     cutter.cut_pdf()
-    print('Corte das páginas concluído.')
