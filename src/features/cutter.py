@@ -23,7 +23,7 @@ class Cutter:
             try:
                 print(f"Processing file {pdf_path}")
                 # Convert the PDF to image
-                images = convert_from_path(pdf_path)
+                images = convert_from_path(pdf_path, dpi=250)
 
                 # Get the first page as image
                 image = images[0]
@@ -32,7 +32,7 @@ class Cutter:
                 width, height = image.size
 
                 # Define the amount to crop
-                crop_amount = 400
+                crop_amount = 900
 
                 # Define the bounding box for the crop
                 left = 0
