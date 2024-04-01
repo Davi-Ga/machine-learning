@@ -6,6 +6,7 @@ class Saver:
         self.pdf_file = pdf_file
         self.output_folder = output_folder
         self.reader = PyPDF2.PdfReader(self.pdf_file)
+        self.process_num = 6
 
     def _is_page_number_valid(self, page_num):
         return 1 <= page_num <= len(self.reader.pages)
@@ -13,7 +14,7 @@ class Saver:
     def _save_page_as_pdf(self, page_num):
         writer = PyPDF2.PdfWriter()  # Create a new PdfWriter instance for each page
         writer.add_page(self.reader.pages[page_num - 1])
-        output_file = f"{self.output_folder}/page_{page_num}.pdf"
+        output_file = f"{self.output_folder}/page_{page_num}_p{self.process_num}.pdf"
         if not os.path.exists(self.output_folder):
             os.makedirs(self.output_folder)
         with open(output_file, 'wb') as output_pdf:
