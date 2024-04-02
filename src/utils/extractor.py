@@ -26,7 +26,7 @@ class Extractor:
         process_nums = self.get_process_number()
         claimants = self.get_claimant()
         info = defaultdict(list)
-        pages= []
+        pages = []
         for (process_num, process_page), (claimant, claimant_page) in zip(process_nums, claimants):
             info[process_num].append((claimant, claimant_page))
             pages.append(claimant_page)
