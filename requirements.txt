@@ -11,3 +11,4 @@ matplotlib-inline
 seaborn
 openpyxl
 python-dotenv
+imblearn
