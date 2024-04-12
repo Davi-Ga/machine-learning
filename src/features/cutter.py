@@ -38,7 +38,7 @@ class Cutter:
                 left = 0
                 top = 0
                 right = width
-                bottom = height - crop_amount
+                bottom = 1200
 
                 # Crop the image to the bounding box
                 cropped_image = image.crop((left, top, right, bottom))
