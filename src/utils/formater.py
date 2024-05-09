@@ -13,6 +13,7 @@ class Formater:
     def extract_from_pdf(self, pattern):
         results = []
         for data in glob.glob(os.path.join(self.path, "*.pdf")):
+            
             try:
                 with open(data, "rb") as file:
                     reader = PyPDF2.PdfReader(file)
@@ -23,6 +24,6 @@ class Formater:
                                 results.append((line, i))
             except (FileNotFoundError, IOError) as e:
                 print(f"Error reading file {data}: {e}")
+        print(results)
         return results
-
 
